@@ -25,3 +25,9 @@ Manifest.toml
 
 # Ignore notebook temps 
 .ipynb_checkpoints
+
+# Ignore VS code
+.vscode
+
+# Ignore local archive of files
+archive

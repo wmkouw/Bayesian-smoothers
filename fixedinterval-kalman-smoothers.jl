@@ -1,23 +1,22 @@
 """
-Implementation of a Rauch-Tung-Striebel smoother based on Ch.8 of Bayesian Filtering & Smoothing (Särkka, 2014)
+Implementation of a Rauch-Tung-Striebel smoother based on 
+Ch.8 of Bayesian Filtering & Smoothing (Särkka, 2014).
 
-Wouter Kouw
-03-07-2021
+Author: Wouter Kouw
+Last update: 03-07-2021
 """
 
 using Distributions
 using Random
 
-include("util.jl")
-
-function rts_smoother(observations,
-                      transition_matrix,
-                      emission_matrix,
-                      process_noise,
-                      measurement_noise,
-                      state0)
+function fixedinterval_rts_smoother(observations,
+                                    transition_matrix,
+                                    emission_matrix,
+                                    process_noise,
+                                    measurement_noise,
+                                    state0)
     """
-    Rauch-Tung-Striebel smoother (Th. 8.2)
+    Fixed-interval Rauch-Tung-Striebel smoother (Th. 8.2)
 
     This filter is built for a linear Gaussian dynamical system with known
     transition coefficients, process and measurement noise.
