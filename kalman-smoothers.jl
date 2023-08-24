@@ -6,12 +6,12 @@ using Distributions
 using Random
 
 
-function fixedinterval_rts_smoother(observations,
-                                    transition_matrix,
-                                    emission_matrix,
-                                    process_noise,
-                                    measurement_noise,
-                                    state0)
+function rts_smoother(observations,
+                      transition_matrix,
+                      emission_matrix,
+                      process_noise,
+                      measurement_noise,
+                      state0)
     """
     Fixed-interval Rauch-Tung-Striebel smoother 
     Bayesian Filtering & Smoothing (Särkka, 2014), Th. 8.2
@@ -56,7 +56,7 @@ function fixedinterval_rts_smoother(observations,
         P_k_pred = transition_matrix*P_kmin*transition_matrix' .+ process_noise
 
         # Forward update step
-        v_k = observations[:,k] .- emission_matrix*m_k_pred
+        v_k = observations[k] .- emission_matrix*m_k_pred
         S_k = emission_matrix*P_k_pred*emission_matrix' .+ measurement_noise
         K_k = P_k_pred*emission_matrix'*inv(S_k)
         m_k = m_k_pred .+ K_k*v_k
