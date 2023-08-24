@@ -23,11 +23,7 @@ docs/site/
 # environment.
 Manifest.toml
 
-# Ignore notebook temps 
+# Ignore local
 .ipynb_checkpoints
-
-# Ignore VS code
 .vscode
-
-# Ignore local archive of files
 archive

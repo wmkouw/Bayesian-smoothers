@@ -1,13 +1,10 @@
 """
-Implementation of a Rauch-Tung-Striebel smoother based on 
-Ch.8 of Bayesian Filtering & Smoothing (Särkka, 2014).
-
-Author: Wouter Kouw
-Last update: 03-07-2021
+Implementations of standard kalman smoothers
 """
 
 using Distributions
 using Random
+
 
 function fixedinterval_rts_smoother(observations,
                                     transition_matrix,
@@ -16,7 +13,8 @@ function fixedinterval_rts_smoother(observations,
                                     measurement_noise,
                                     state0)
     """
-    Fixed-interval Rauch-Tung-Striebel smoother (Th. 8.2)
+    Fixed-interval Rauch-Tung-Striebel smoother 
+    Bayesian Filtering & Smoothing (Särkka, 2014), Th. 8.2
 
     This filter is built for a linear Gaussian dynamical system with known
     transition coefficients, process and measurement noise.
